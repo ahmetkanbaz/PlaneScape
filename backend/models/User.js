@@ -26,7 +26,7 @@ UserSchema.pre('save', async function(next) {
 })
 
 //Şifre doğrulama metodu
-UserSchema.methods.matchPassword = async function(enteredPassword) {
+UserSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 

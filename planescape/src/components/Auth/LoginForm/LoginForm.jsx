@@ -16,7 +16,10 @@ const LoginForm = () => {
     onSubmit: async (values, bag) => {
       const response = await userLogin(values)
       Toast({message: response.message, type: response.success ? 'success' : 'error'})
-      if (response.success) navigate('/')
+      if (response.success) {
+        navigate('/')
+        localStorage.setItem('planeScapeUserId', JSON.stringify(response.userId))
+      }
       bag.resetForm();
     },
   });

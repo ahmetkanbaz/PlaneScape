@@ -4,14 +4,14 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { setTheme } from "./redux/slices/themeSlice";
-import { setUserId } from "./redux/slices/userIdSlice";
+import { setUser } from "./redux/slices/userSlice";
 
 function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
     const planeScapeTheme = localStorage.getItem('planeScapeTheme')
-    const planeScapeUserId = localStorage.getItem('planeScapeUserId')
+    const planeScapeUser = localStorage.getItem('planeScapeUser')
     if (planeScapeTheme) {
       dispatch(setTheme(JSON.parse(planeScapeTheme)))
     }
@@ -19,8 +19,8 @@ function App() {
       dispatch(setTheme('light'))
       localStorage.setItem('planeScapeTheme', JSON.stringify('light'))
     }
-    if (planeScapeUserId) {
-      dispatch(setUserId(JSON.parse(planeScapeUserId)))
+    if (planeScapeUser) {
+      dispatch(setUser(JSON.parse(planeScapeUser)))
     }
   }, [])
   return (

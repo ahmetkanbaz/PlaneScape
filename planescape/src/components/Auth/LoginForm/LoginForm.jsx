@@ -6,7 +6,7 @@ import FormButton from "../FormButton/FormButton";
 import { userLogin } from "../../../services/posts";
 import Toast from "../../Toast/Toast";
 import { useDispatch } from "react-redux";
-import { setUserId } from "../../../redux/slices/userIdSlice";
+import { setUser } from "../../../redux/slices/userSlice";
 
 const LoginForm = () => {
   const dispatch = useDispatch()
@@ -20,9 +20,10 @@ const LoginForm = () => {
       const response = await userLogin(values)
       Toast({message: response.message, type: response.success ? 'success' : 'error'})
       if (response.success) {
+        let userValues = {userName: response.userName, userId: response.userId}
         navigate('/')
-        localStorage.setItem('planeScapeUserId', JSON.stringify(response.userId))
-        dispatch(setUserId(response.userId))
+        localStorage.setItem('planeScapeUser', JSON.stringify(userValues))
+        dispatch(setUser(userValues))
       }
       bag.resetForm();
     },

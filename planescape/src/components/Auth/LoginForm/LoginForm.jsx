@@ -5,8 +5,11 @@ import FormInputLabel from "../../FormInputLabel/FormInputLabel";
 import FormButton from "../FormButton/FormButton";
 import { userLogin } from "../../../services/posts";
 import Toast from "../../Toast/Toast";
+import { useDispatch } from "react-redux";
+import { setUserId } from "../../../redux/slices/userIdSlice";
 
 const LoginForm = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
@@ -19,6 +22,7 @@ const LoginForm = () => {
       if (response.success) {
         navigate('/')
         localStorage.setItem('planeScapeUserId', JSON.stringify(response.userId))
+        dispatch(setUserId(response.userId))
       }
       bag.resetForm();
     },

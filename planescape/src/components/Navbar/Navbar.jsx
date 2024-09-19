@@ -1,12 +1,10 @@
 import planeLogo from '../../assets/planelogo.png'
 import { Link } from "react-router-dom"
 import UserMenu from './UserMenu/UserMenu'
-import { useSelector } from 'react-redux'
 
 const Navbar = () => {
-  const theme = useSelector((state) => state.theme.theme)
   return (
-    <nav className={`navbar navbar-expand-lg ${theme == 'light' ? 'bg-body-tertiary' : 'bg-black'}`}>
+    <nav className='navbar navbar-expand-lg'>
   <div className="container">
     <Link to='/' className="navbar-brand">
       <img src={planeLogo} alt="Plane Scape Logo" className='img-fluid' width={100} />

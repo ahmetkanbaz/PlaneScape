@@ -13,6 +13,11 @@ export const GlobalStyle = createGlobalStyle`
     transition: all .3s ease-in-out;
   }
 
+  ::placeholder {
+    font-size: .89rem;
+    font-style: italic;
+  }
+
   .nav-link {
     color: ${({theme}) => theme == 'light' ? '#000000' : '#F5F5F5'}
   }

@@ -60,7 +60,7 @@ const RegisterForm = () => {
         ))}
         <FormButton title="Kayıt Ol" />
       </form>
-      <p className="mb-0">
+      <p className="mb-0 fst-italic">
         Zaten bir hesabınız var mı? <Link to="/auth/login">Giriş Yap</Link>
       </p>
     </div>

@@ -43,6 +43,9 @@ export const FlightListWrapper = styled.section`
   }
 
   .singleFlight {
+    .position-relative {
+      background-color: ${({theme}) => theme == 'light' ? '#FFFFFF' : '#232323'};
+    }
     .bookFlightButton {
       ${showandBookFlightButton}
       border-radius: 7px 0 7px 0;
@@ -55,6 +58,9 @@ export const FlightListWrapper = styled.section`
       &:hover {
         background-color: #e7c9f9;
       }
+    }
+    .otherInfos {
+      font-size: .84rem;
     }
   }
 `;

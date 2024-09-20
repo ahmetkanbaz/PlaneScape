@@ -23,14 +23,16 @@ const Flights = ({departureArrival}) => {
 
   useEffect(() => {
     getFlights();
-  }, []);
+  }, [departureArrival]);
+
+  console.log(flights)
 
   if (loading) return <p>Loading</p>;
   
   return (
     <div className="col-md-9">
-      {flights.map((flight, i) => (
-        <div key={i}>{flight.flightDirection}</div>
+      {flights.map((flight) => (
+        <SingleFlight key={flight.id} flight = {flight}/>
       ))}
     </div>
   );

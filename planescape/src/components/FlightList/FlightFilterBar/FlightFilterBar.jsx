@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { FaPlane } from "react-icons/fa6";
 import LocationDate from "./LocationDate/LocationDate";
-const FlightFilterBar = ({setDepartureArrival}) => {
+const FlightFilterBar = ({ setDepartureArrival }) => {
   return (
     <div className="p-3 mt-4 rounded-4 flightFilterBar">
       <div className="d-flex justify-content-md-between align-items-center flex-wrap">
@@ -37,9 +37,11 @@ const FlightFilterBar = ({setDepartureArrival}) => {
         </div>
       </div>
 
-      <LocationDate setDepartureArrival = {setDepartureArrival}/>
+      <LocationDate setDepartureArrival={setDepartureArrival} />
 
-      <button className="btn px-4 py-2 showButton" type = 'button'>Show flights</button>
+      <button className="btn px-4 py-2 showButton" type="button">
+        Show flights
+      </button>
     </div>
   );
 };

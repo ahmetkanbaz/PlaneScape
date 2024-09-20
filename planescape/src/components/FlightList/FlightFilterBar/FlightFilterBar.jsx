@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { FaPlane } from "react-icons/fa6";
 import LocationDate from "./LocationDate/LocationDate";
-const FlightFilterBar = () => {
+const FlightFilterBar = ({setDepartureArrival}) => {
   return (
     <div className="p-3 mt-4 rounded-4 flightFilterBar">
       <div className="d-flex justify-content-md-between align-items-center flex-wrap">
@@ -15,7 +16,6 @@ const FlightFilterBar = () => {
               name="roundTrip"
               id="roundTrip"
               autoComplete="off"
-              // onChange={(e) => setSelectedForm(e.target.id)}
               defaultChecked="checked"
             />
             <label className="btn px-3 rounded-start-5" htmlFor="roundTrip">
@@ -23,13 +23,12 @@ const FlightFilterBar = () => {
             </label>
           </div>
           <div>
-          <input
+            <input
               type="radio"
               className="btn-check"
               name="roundTrip"
               id="oneWay"
               autoComplete="off"
-              // onChange={(e) => setSelectedForm(e.target.id)}
             />
             <label className="btn px-3 rounded-end-5" htmlFor="oneWay">
               One way
@@ -38,9 +37,9 @@ const FlightFilterBar = () => {
         </div>
       </div>
 
-      <LocationDate />
+      <LocationDate setDepartureArrival = {setDepartureArrival}/>
 
-      <button className="btn px-4 py-2 showButton">Show flights</button>
+      <button className="btn px-4 py-2 showButton" type = 'button'>Show flights</button>
     </div>
   );
 };

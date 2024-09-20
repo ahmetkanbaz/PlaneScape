@@ -1,14 +1,19 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SingleFlight from "./SingleFlight/SingleFlight";
 
-const Flights = () => {
+const Flights = ({departureArrival}) => {
   const [loading, setLoading] = useState(false);
   const [flights, setFlights] = useState([]);
   const [error, setError] = useState(null);
+  
   const getFlights = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3001/api/flights");
+      const response = await axios.get("http://localhost:3001/api/flights", {
+        params: { flightDirection: departureArrival == 'departure' ? 'D' : 'A' } // Yön parametresini ekliyoruz
+    });
       setFlights(response.data?.flights);
     } catch (error) {
       setError(error.message);
@@ -19,12 +24,13 @@ const Flights = () => {
   useEffect(() => {
     getFlights();
   }, []);
-  
+
   if (loading) return <p>Loading</p>;
+  
   return (
-    <div className="col-md-9 bg-danger">
+    <div className="col-md-9">
       {flights.map((flight, i) => (
-        <div key={i}>{flight.actualLandingTime}</div>
+        <div key={i}>{flight.flightDirection}</div>
       ))}
     </div>
   );

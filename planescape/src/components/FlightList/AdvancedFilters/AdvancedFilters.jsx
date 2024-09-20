@@ -1,6 +1,6 @@
 const AdvancedFilters = () => {
   return (
-    <div>AdvancedFilters</div>
+    <div className="col-md-3">AdvancedFilters</div>
   )
 }
 

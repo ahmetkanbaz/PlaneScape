@@ -4,8 +4,10 @@ import { FaPlane } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { bookingFlight } from "../../../../services/posts";
 import Toast from "../../../Toast/Toast";
+import { useNavigate } from "react-router-dom";
 
 const SingleFlight = ({ flight }) => {
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
   const {
     lastUpdatedAt,
@@ -21,8 +23,16 @@ const SingleFlight = ({ flight }) => {
   } = flight;
 
   const handleBooking = async () => {
-    const response = await bookingFlight(flight, user.userId);
-    Toast({ message: response.message });
+    if (Object.keys(user).length == 0) {
+      Toast({
+        message: "Uçuşa rezervasyon yaptırabilmek için lütfen giriş yapınız.",
+        type: "error",
+      });
+      navigate("/auth/login");
+    } else {
+      const response = await bookingFlight(flight, user.userId);
+      Toast({ message: response.message });
+    }
   };
 
   const options = { hour: "2-digit", minute: "2-digit", hour12: false };

@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
 import { LuPlaneTakeoff, LuPlaneLanding } from "react-icons/lu";
 import { FaPlane } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { bookingFlight } from "../../../../services/posts";
+import Toast from "../../../Toast/Toast";
 
 const SingleFlight = ({ flight }) => {
+  const user = useSelector((state) => state.user.user);
   const {
     lastUpdatedAt,
     flightDirection,
@@ -15,6 +19,11 @@ const SingleFlight = ({ flight }) => {
     airlineCode,
     mainFlight,
   } = flight;
+
+  const handleBooking = async () => {
+    const response = await bookingFlight(flight, user.userId);
+    Toast({ message: response.message });
+  };
 
   const options = { hour: "2-digit", minute: "2-digit", hour12: false };
 
@@ -73,6 +82,7 @@ const SingleFlight = ({ flight }) => {
         <button
           className="btn position-absolute bottom-0 end-0 px-4 py-3 bookFlightButton"
           type="button"
+          onClick={handleBooking}
         >
           Book Flight
         </button>

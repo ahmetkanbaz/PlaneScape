@@ -25,8 +25,6 @@ const Flights = ({departureArrival}) => {
     getFlights();
   }, [departureArrival]);
 
-  console.log(flights)
-
   if (loading) return <p>Loading</p>;
   
   return (

@@ -8,7 +8,7 @@ const {
 
 // Routes
 router.post('/', createReservation);
-router.get('/', getAllReservations);
+router.get('/:userId', getAllReservations);
 router.delete('/:id', deleteReservation);
 
 module.exports = router;

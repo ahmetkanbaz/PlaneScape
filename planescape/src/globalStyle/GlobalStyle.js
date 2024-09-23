@@ -28,4 +28,8 @@ export const GlobalStyle = createGlobalStyle`
   .nav-link {
     color: ${({ theme }) => (theme == "light" ? "#000000" : "#F5F5F5")}
   }
+
+  .myFlight {
+    background-color: ${({theme}) => theme == 'light' ? '#FFFFFF' : '#252525'};
+  }
 `;

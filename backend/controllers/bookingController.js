@@ -44,10 +44,11 @@ const createReservation = async (req, res) => {
   }
 };
 
-// Tüm rezervasyonları listeleme
+// Giriş yapan kullanıcının rezervasyonları listeleme
 const getAllReservations = async (req, res) => {
+  const {userId} = req.params //userId'yi alıyoruz
   try {
-    const reservations = await Booking.find();
+    const reservations = await Booking.find({userId});
     res.status(200).json(reservations);
   } catch (error) {
     res.status(500).json({ message: 'Rezervasyonlar alınamadı', error });
@@ -57,15 +58,14 @@ const getAllReservations = async (req, res) => {
 // Rezervasyonu silme
 const deleteReservation = async (req, res) => {
   const { id } = req.params;
-
   try {
-    const reservation = await Booking.findByIdAndDelete(id);
+    const reservation = await Booking.findOneAndDelete({ _id: id });
     if (!reservation) {
-      return res.status(404).json({ message: 'Rezervasyon bulunamadı' });
+      return res.status(404).json({ message: 'Rezervasyon bulunamadı.' });
     }
-    res.status(204).send(); // Başarılı bir silme işlemi için boş bir yanıt gönderir
+    res.status(200).json({ message: 'Rezervasyon başarıyla silindi.' });
   } catch (error) {
-    res.status(500).json({ message: 'Rezervasyon silinemedi', error });
+    res.status(500).json({ message: 'Rezervasyon silinirken bir hatayla karşılaşıldı!', error });
   }
 };
 

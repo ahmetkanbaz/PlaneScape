@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SingleFlight from "./SingleFlight/SingleFlight";
+import Loading from "../../Loading/Loading";
+import ErrorDanger from '../../ErrorDanger/ErrorDanger'
 
 const Flights = ({departureArrival}) => {
   const [loading, setLoading] = useState(false);
@@ -25,10 +27,12 @@ const Flights = ({departureArrival}) => {
     getFlights();
   }, [departureArrival]);
 
-  if (loading) return <p>Loading</p>;
+  if (loading) return <Loading />;
+
+  if (error) return <ErrorDanger message={error} />
   
   return (
-    <div className="col-md-9">
+    <div>
       {flights.map((flight) => (
         <SingleFlight key={flight.id} flight = {flight}/>
       ))}

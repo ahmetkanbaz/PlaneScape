@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  a {
+    transition: all .3s ease-in-out;
+  }
+
   body {
     background-color: ${({ theme }) =>
       theme == "light" ? "#F0F0F0" : "#232323"};
@@ -30,6 +34,40 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .myFlight {
-    background-color: ${({theme}) => theme == 'light' ? '#FFFFFF' : '#252525'};
+    background-color: ${({ theme }) =>
+      theme == "light" ? "#FFFFFF" : "#252525"};
+  }
+
+  .rightfooter {
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: #E0E0E0;
+      &:hover {
+        color: #FFFFFF;
+      }
+      &:nth-child(1) {
+        &:hover {
+          background-color: #EC6B49;
+        }
+      }
+      &:nth-child(2) {
+        &:hover {
+          background-color: #0A84E8;
+        }
+      }
+      &:nth-child(3) {
+        &:hover {
+          background-color: #000000;
+        }
+      }
+      &:nth-child(4) {
+        &:hover {
+          background-color: #F70000;
+        }
+      }}
   }
 `;

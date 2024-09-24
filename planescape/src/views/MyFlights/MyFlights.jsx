@@ -39,18 +39,6 @@ const MyFlights = () => {
     <section className="py-5">
       <div className="container">
         <SectionTitle title="Uçuşlarım" classname="fw-medium" />
-        <div className="mt-4">
-        <div className="dropdown">
-  <button className="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Sırala
-  </button>
-  <ul className="dropdown-menu">
-    <li><a className="dropdown-item" href="#">Action</a></li>
-    <li><a className="dropdown-item" href="#">Another action</a></li>
-    <li><a className="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div>
-        </div>
         <MyFlightsLists myflight={myFlights} getMyFlights = {getMyFlights}/>
       </div>
     </section>

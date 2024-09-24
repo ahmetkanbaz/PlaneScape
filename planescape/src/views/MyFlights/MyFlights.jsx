@@ -40,6 +40,7 @@ const MyFlights = () => {
       <div className="container">
         <SectionTitle title="Uçuşlarım" classname="fw-medium" />
         <MyFlightsLists myflight={myFlights} getMyFlights = {getMyFlights}/>
+        
       </div>
     </section>
   );

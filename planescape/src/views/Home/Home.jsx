@@ -1,7 +1,13 @@
+import FlightList from "../../components/FlightList/FlightList";
+import HomeBanner from "../../components/HomeBanner/HomeBanner";
+
 const Home = () => {
   return (
-    <>Home</>
-  )
-}
+    <>
+      <HomeBanner />
+      <FlightList />
+    </>
+  );
+};
 
-export default Home
+export default Home;

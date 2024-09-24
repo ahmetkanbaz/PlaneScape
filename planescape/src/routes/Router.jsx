@@ -5,14 +5,19 @@ import MyFlights from "../views/MyFlights/MyFlights";
 import AuthLayout from "../layouts/AuthLayout/AuthLayout";
 import Login from "../views/Auth/Login/Login";
 import Register from "../views/Auth/Register/Register";
+import { useSelector } from "react-redux";
 const Router = () => {
+  const user = useSelector((state) => state.user.user);
+  const isUserLogin = Object.keys(user).length == 0 ? false : true;
   const routes = useRoutes([
     {
       path: "/",
       element: <AppLayout />,
       children: [
         { path: "", element: <Home /> },
-        { path: "ucuslarim", element: <MyFlights /> },
+        isUserLogin
+          ? { path: "ucuslarim", element: <MyFlights /> } //Burada kullanıcı eğer login yapmamış ise Uçuşlarım sayfasına girebilmesinin önüne geçiyoruz.
+          : { path: "ucuslarim", element: <Home /> },
       ],
     },
     {
